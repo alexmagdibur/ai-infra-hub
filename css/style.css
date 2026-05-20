@@ -31,7 +31,7 @@
 }
 
 *{box-sizing:border-box;margin:0;padding:0;}
-html{scroll-behavior:smooth;}
+html{scroll-behavior:smooth; overflow-x:hidden;}
 body{
   background:var(--bg);
   color:var(--fg);
@@ -236,6 +236,8 @@ section.dense{padding-block: clamp(48px, 6vw, 96px);}
   display:grid; grid-template-columns: 220px 1fr; gap:48px;
   align-items:start;
 }
+/* prevent wide children (white-space:pre diag blocks, tables) from blowing out grid */
+.section-rail > *{ min-width:0; }
 .section-rail__label{
   position:sticky; top:96px;
   font-family:var(--font-mono); font-size:11px; text-transform:uppercase; letter-spacing:0.16em;
@@ -263,6 +265,7 @@ section.dense{padding-block: clamp(48px, 6vw, 96px);}
   display:flex; flex-direction:column; gap:14px;
   min-height:240px; justify-content:space-between;
   position:relative;
+  min-width:0;
 }
 .stat__num{
   font-family:var(--font-display); font-weight:500;
@@ -291,6 +294,7 @@ section.dense{padding-block: clamp(48px, 6vw, 96px);}
   display:grid; grid-template-columns: 60px 1fr 40px;
   gap:24px; align-items:start;
   padding: 36px 28px;
+  min-width:0;
   border-bottom:1px solid var(--line);
   border-right:1px solid var(--line);
   transition: background .25s ease;
@@ -360,7 +364,8 @@ section.dense{padding-block: clamp(48px, 6vw, 96px);}
 }
 .tbl td:first-child{color:var(--fg); font-weight:500;}
 .tbl td .accent{color:var(--accent);}
-.tbl-wrap{overflow-x:auto; border:1px solid var(--line); border-radius:2px;}
+.tbl-wrap{overflow-x:auto; border:1px solid var(--line); border-radius:2px; -webkit-overflow-scrolling:touch;}
+.diag{overflow-x:auto; -webkit-overflow-scrolling:touch;}
 
 /* ---------- feature cards (4-up) ---------- */
 .feat{
@@ -373,6 +378,7 @@ section.dense{padding-block: clamp(48px, 6vw, 96px);}
   padding:36px 32px;
   display:flex; flex-direction:column; gap:16px;
   min-height:280px;
+  min-width:0;
 }
 .feat__cell:hover{background:var(--bg-1);}
 .feat__num{font-family:var(--font-mono); font-size:11px; color:var(--accent); letter-spacing:0.12em; text-transform:uppercase;}
@@ -396,6 +402,7 @@ section.dense{padding-block: clamp(48px, 6vw, 96px);}
   line-height:1.65; color:var(--fg-2);
   overflow-x:auto;
   white-space:pre;
+  max-width:100%;
 }
 .diag .hl{color:var(--accent);}
 .diag .h{color:var(--fg); font-weight:500;}
@@ -408,6 +415,7 @@ section.dense{padding-block: clamp(48px, 6vw, 96px);}
   border-top:1px solid var(--line);
   padding: 28px 0;
 }
+.bignum > *{ min-width:0; }
 .bignum:last-child{border-bottom:1px solid var(--line);}
 .bignum__n{
   font-family:var(--font-display); font-weight:500;
@@ -422,8 +430,10 @@ section.dense{padding-block: clamp(48px, 6vw, 96px);}
   display:grid; grid-template-columns: 280px 1fr; gap:48px;
   padding: 56px 0;
   border-bottom:1px solid var(--line);
+  min-width:0;
 }
 .case:last-child{border-bottom:0;}
+.case > *{ min-width:0; }
 .case__head{position:sticky; top:96px; align-self:start;}
 .case__wm{
   font-family:var(--font-display); font-weight:500;
@@ -471,6 +481,7 @@ section.dense{padding-block: clamp(48px, 6vw, 96px);}
   display:grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap:48px;
   margin-bottom:80px;
 }
+.foot__col{ min-width:0; }
 .foot__col h5{
   font-family:var(--font-mono); font-size:11px; text-transform:uppercase; letter-spacing:0.12em;
   color:var(--fg-3); font-weight:400; margin-bottom:14px;
@@ -540,6 +551,7 @@ section.dense{padding-block: clamp(48px, 6vw, 96px);}
 .hr.thick{border-top:1px solid var(--line-2);}
 .flex-row{display:flex; align-items:center; gap:14px; flex-wrap:wrap;}
 .split{display:grid; grid-template-columns:1fr 1fr; gap:64px;}
+.split > *{ min-width:0; }
 @media (max-width:780px){.split{grid-template-columns:1fr; gap:24px;}}
 
 /* visual placeholder */
@@ -640,4 +652,142 @@ section.dense{padding-block: clamp(48px, 6vw, 96px);}
 /* ---------- next section CTA ---------- */
 @media (max-width:640px){
   .flex-row.next-row{flex-direction:column; align-items:flex-start; gap:24px;}
+}
+
+/* ================================================================
+   MOBILE — 640px и ниже
+   ================================================================ */
+@media (max-width:640px){
+
+  /* --- page header --- */
+  .page-head{ padding-top:40px; padding-bottom:32px; }
+
+  .page-head__rail{
+    flex-direction:column;
+    align-items:flex-start;
+    gap:8px;
+    margin-bottom:24px;
+  }
+  .page-head__num{
+    font-size:clamp(52px, 18vw, 88px);
+    line-height:0.85;
+  }
+  .page-head__meta{
+    text-align:left;
+    max-width:none;
+  }
+
+  /* --- home hero --- */
+  .hero{ padding-top:40px; padding-bottom:56px; }
+  .hero__title{ margin-bottom:28px; }
+
+  /* --- типографика --- */
+  .h-display{
+    font-size:clamp(42px, 13vw, 68px);
+    letter-spacing:-0.025em;
+    line-height:0.9;
+  }
+  .h-1{
+    font-size:clamp(32px, 9.5vw, 54px);
+    line-height:0.95;
+  }
+  .h-2{
+    font-size:clamp(22px, 7vw, 38px);
+    line-height:1.05;
+  }
+  .h-3{ font-size:clamp(17px, 5vw, 22px); }
+
+  .lede{
+    font-size:clamp(16px, 4.8vw, 21px);
+    line-height:1.45;
+  }
+  .callout{ font-size:16px; line-height:1.5; }
+
+  /* --- section rail sidebar number --- */
+  .section-rail__label .num{ font-size:28px; }
+
+  /* --- стат плитки --- */
+  .stat{ min-height:140px; padding:20px 16px; }
+  .stat__num{ font-size:clamp(28px, 8vw, 48px); }
+
+  /* --- feat / feature cards --- */
+  .feat__cell{ padding:24px 18px; min-height:0; }
+  .feat__title{ font-size:20px; }
+  /* ключ-значение в списке: ключ на отдельной строке */
+  .feat__list li .k{
+    display:block;
+    min-width:0;
+    margin-bottom:2px;
+  }
+
+  /* --- диаграммы (ASCII) --- */
+  .diag{
+    font-size:11px;
+    padding:18px 14px;
+    line-height:1.55;
+  }
+
+  /* --- bignum --- */
+  .bignum{ grid-template-columns:52px 1fr; gap:14px; }
+  .bignum__n{ font-size:32px; }
+  .bignum__t{ font-size:17px; margin-bottom:6px; }
+
+  /* --- карточки навигации --- */
+  .card{ padding:22px 14px; gap:10px; grid-template-columns:28px 1fr 18px; }
+  .card__title{ font-size:19px; }
+  .card__desc{ font-size:13px; }
+
+  /* --- таблицы --- */
+  .tbl{ font-size:13px; }
+  .tbl th, .tbl td{ padding:11px 10px; }
+
+  /* --- цитата --- */
+  .quote blockquote{ font-size:clamp(17px, 5.2vw, 24px); }
+
+  /* --- чипы --- */
+  .chip{ font-size:10px; padding:5px 9px; letter-spacing:0.06em; gap:6px; }
+
+  /* --- кейсы --- */
+  .case__wm{ font-size:34px; }
+
+  /* --- футер --- */
+  .foot{ padding:40px 0 28px; }
+  .foot__brand{ font-size:34px; }
+
+  /* --- секции: меньше отступы --- */
+  section{ padding-block:clamp(40px, 7vw, 72px); }
+  section.dense{ padding-block:clamp(32px, 5vw, 56px); }
+}
+
+/* ================================================================
+   MOBILE S — 380px и ниже
+   ================================================================ */
+@media (max-width:380px){
+
+  /* большое число в шапке страницы скрываем — занимает слишком много места */
+  .page-head__num{ display:none; }
+  .page-head__rail{ margin-bottom:14px; }
+
+  .h-display{ font-size:clamp(38px, 12vw, 54px); }
+  .h-1{ font-size:clamp(28px, 9vw, 42px); }
+  .h-2{ font-size:clamp(20px, 6.5vw, 30px); }
+
+  .lede{ font-size:clamp(15px, 4.6vw, 19px); }
+
+  .stat-grid{ grid-template-columns:1fr; }
+  .stat{ min-height:0; }
+
+  /* feat в одну колонку (уже есть на 780px, но сохраняем явно) */
+  .feat{ grid-template-columns:1fr; }
+
+  .bignum{ grid-template-columns:44px 1fr; gap:12px; }
+  .bignum__n{ font-size:28px; }
+
+  .card{ grid-template-columns:24px 1fr 16px; padding:18px 12px; }
+  .card__title{ font-size:17px; }
+
+  .tbl th, .tbl td{ padding:9px 8px; }
+
+  .case__wm{ font-size:28px; }
+  .foot__brand{ font-size:28px; }
 }

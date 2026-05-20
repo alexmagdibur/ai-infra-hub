@@ -18,7 +18,9 @@
       "PowerShell(New-Item -ItemType Directory -Force \"D:\\\\BMSTU\\\\ai-infra-hub\\\\regulation\")",
       "PowerShell(New-Item -ItemType Directory -Force \"D:\\\\BMSTU\\\\ai-infra-hub\\\\mlops\")",
       "PowerShell(New-Item -ItemType Directory -Force \"D:\\\\BMSTU\\\\ai-infra-hub\\\\about\")",
-      "PowerShell(Get-ChildItem -Recurse \"D:\\\\BMSTU\\\\ai-infra-hub\" | Where-Object { !$_.PSIsContainer } | Select-Object FullName, Length | Sort-Object FullName)"
+      "PowerShell(Get-ChildItem -Recurse \"D:\\\\BMSTU\\\\ai-infra-hub\" | Where-Object { !$_.PSIsContainer } | Select-Object FullName, Length | Sort-Object FullName)",
+      "Bash(mkdir \"D:\\\\BMSTU\\\\ai-infra-hub\\\\.claude\" 2>nul; echo done)",
+      "mcp__Claude_Preview__preview_start"
     ]
   }
 }
