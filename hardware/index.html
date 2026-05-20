@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>03 · Железо и дата-центры — AI Infrastructure Hub</title>
+<meta name="description" content="GPU vs CPU, топология кластера, охлаждение, данные по рынку ЦОД России 2024.">
+<link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+<nav class="nav" role="navigation" aria-label="Основная навигация">
+  <div class="wrap nav__inner">
+    <a href="../index.html" class="brand" aria-label="AI Infrastructure Hub — на главную">
+      <span class="dot" aria-hidden="true"></span>
+      <span>AI · INFRASTRUCTURE <b>HUB</b></span>
+    </a>
+    <div class="nav__menu" id="nav-main">
+      <a href="../why-fintech/">01 · Зачем</a>
+      <a href="../cases/">02 · Кейсы</a>
+      <a href="../hardware/" class="is-current">03 · Железо</a>
+      <a href="../on-prem-vs-cloud/">04 · Cloud</a>
+      <a href="../regulation/">05 · Право</a>
+      <a href="../mlops/">06 · MLOps</a>
+      <a href="../about/">07 · О проекте</a>
+    </div>
+    <button class="nav__toggle" aria-controls="nav-main" aria-expanded="false" aria-label="Открыть меню">
+      <span></span><span></span><span></span>
+    </button>
+    <div class="nav__num" aria-hidden="true">03 / 07</div>
+  </div>
+</nav>
+
+<header class="page-head">
+  <div class="head-bg" role="img" aria-label="Крупный план GPU-чипа" style="background-image:url('https://images.unsplash.com/photo-1591488320449-011701bb6704?w=2000&q=80&auto=format&fit=crop');"></div>
+  <div class="wrap">
+    <div class="crumb">
+      <a href="../index.html">← Главная</a>
+      <span class="arr">/</span>
+      <span>Раздел 03</span>
+    </div>
+    <div class="page-head__rail">
+      <div class="page-head__num" aria-hidden="true">03</div>
+      <div class="page-head__meta">
+        Раздел 03<br>
+        <b>Железо и дата-центры</b><br>
+        GPU · топология · охлаждение
+      </div>
+    </div>
+    <h1 class="h-1 page-head__title">
+      Тысячи&nbsp;CUDA-ядер,<br>
+      сорок киловатт<br>
+      <span class="ser">в&nbsp;одной</span> стойке.
+    </h1>
+    <p class="lede">
+      Технический слой AI: что собирают, чем охлаждают, где размещают. От&nbsp;разницы CUDA vs CPU&nbsp;— до&nbsp;географии новых ЦОД с&nbsp;дешёвой электроэнергией в&nbsp;Иркутской и&nbsp;Мурманской областях.
+    </p>
+  </div>
+</header>
+
+<!-- ============ GPU vs CPU ============ -->
+<section>
+  <div class="wrap">
+    <div class="section-rail">
+      <div class="section-rail__label">
+        <span class="num">3.1</span>
+        GPU против CPU
+      </div>
+      <div>
+        <h2 class="h-2" style="margin-bottom:28px;">Почему ускорители&nbsp;— <span class="ser">обязательны</span></h2>
+        <p class="body" style="margin-bottom:32px;">Обучение нейросети&nbsp;— это матричные операции над&nbsp;миллиардами параметров. CPU архитектурно не&nbsp;предназначен для&nbsp;параллельных однотипных вычислений. У&nbsp;NVIDIA&nbsp;A100&nbsp;— 6912 CUDA-ядер против 64 у&nbsp;топового CPU, плюс высокая пропускная способность HBM-памяти.</p>
+
+        <div class="split" style="margin-bottom:48px;">
+          <div>
+            <div class="stat__num" style="font-size:88px;">6 912</div>
+            <div class="eyebrow" style="margin-top:6px;">CUDA-ядер · NVIDIA A100</div>
+          </div>
+          <div>
+            <div class="stat__num" style="font-size:88px;">64</div>
+            <div class="eyebrow" style="margin-top:6px;">Ядер · топовый серверный CPU</div>
+          </div>
+        </div>
+
+        <h3 class="h-3" style="margin-bottom:18px;">Типы задач — и&nbsp;что под них берут</h3>
+        <div class="tbl-wrap">
+        <table class="tbl">
+          <thead><tr><th>Задача</th><th>Оборудование</th><th>Почему</th></tr></thead>
+          <tbody>
+            <tr><td>Обучение LLM / больших моделей</td><td><span class="accent">GPU (H100/A100), кластеры</span></td><td>Массовый параллелизм, HBM-память</td></tr>
+            <tr><td>Batch-inference (скоринг)</td><td>GPU или CPU</td><td>Зависит от сложности модели</td></tr>
+            <tr><td>Real-time inference (антифрод)</td><td><span class="accent">FPGA или GPU</span></td><td>Детерминированная задержка</td></tr>
+            <tr><td>Обработка данных (ETL)</td><td>CPU-кластер (Spark)</td><td>Последовательная логика</td></tr>
+          </tbody>
+        </table>
+        </div>
+
+        <div class="callout" style="margin-top:32px;">
+          <b style="color:var(--accent); font-style:normal; font-family:var(--font-mono); font-size:13px; letter-spacing:0.1em;">RU CONTEXT —</b> До&nbsp;2022&nbsp;года&nbsp;— NVIDIA A100/V100, AMD MI. После санкций: догрузка накопленного оборудования и&nbsp;поиск альтернатив. Отечественные разработки&nbsp;— Yadro (партнёрство с&nbsp;китайскими фабами), НМ-Тех, перспективный ускоритель «Поток».
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TOPOLOGY DIAGRAM ============ -->
+<section>
+  <div class="wrap">
+    <div class="section-rail">
+      <div class="section-rail__label">
+        <span class="num">3.2</span>
+        Топология кластера
+      </div>
+      <div>
+        <h2 class="h-2" style="margin-bottom:32px;">Как собран<br><span class="ser">GPU-кластер</span> в&nbsp;банке</h2>
+
+        <div class="diag">
+<span class="c">// типичная схема, упрощённо</span>
+
+  <span class="h">┌─ ВЫЧИСЛИТЕЛЬНЫЕ УЗЛЫ ─────────────────────────────┐</span>
+  │   GPU-сервер 01    8× <span class="hl">A100</span>      640 GB HBM        │
+  │   GPU-сервер 02    8× <span class="hl">A100</span>      640 GB HBM        │
+  │      …             …            …                  │
+  │   GPU-сервер N     8× <span class="hl">A100</span>      640 GB HBM        │
+  <span class="h">└────────────────────────────────────────────────────┘</span>
+                       │
+              <span class="b">InfiniBand HDR · 200 Gb/s</span>     ←  между GPU-нодами
+                       │
+  <span class="h">┌─ ХРАНЕНИЕ ─────────────────┐    ┌─ CPU-КЛАСТЕР ─────┐</span>
+  │  Lustre / GPFS / Ceph      │    │  ETL / pre-process  │
+  │  NVMe-массивы для training │    │  API · оркестрация  │
+  <span class="h">└─ 100 GbE ──────────────────┘    └─────────────────────┘</span>
+
+  <span class="c">Ключевая идея: GPU-узлы соединены InfiniBand для распределённого
+  обучения. Хранилище и CPU — по 100 GbE. Слабое звено в любой
+  точке убивает скорость всего кластера.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ DATA CENTER REQUIREMENTS ============ -->
+<section>
+  <div class="wrap">
+    <div class="section-rail">
+      <div class="section-rail__label">
+        <span class="num">3.3</span>
+        Требования к ЦОД
+      </div>
+      <div>
+        <h2 class="h-2" style="margin-bottom:28px;">AI-нагрузка <span class="ser">переписывает</span> требования к&nbsp;дата-центрам</h2>
+
+        <h3 class="h-3" style="margin-top:32px; margin-bottom:18px;">Энергопотребление</h3>
+        <div class="bignum">
+          <div class="bignum__n">5–10</div>
+          <div>
+            <div class="bignum__t">кВт · обычная стойка</div>
+            <div class="bignum__d">Стандарт коммерческого ЦОД середины 2010-х. Под&nbsp;CPU-нагрузку этого хватало с&nbsp;запасом.</div>
+          </div>
+        </div>
+        <div class="bignum">
+          <div class="bignum__n">20–40</div>
+          <div>
+            <div class="bignum__t">кВт · стойка с GPU-серверами</div>
+            <div class="bignum__d">Минимум, на&nbsp;который сейчас модернизируют российские ЦОД, чтобы вообще разговаривать про&nbsp;AI-нагрузку.</div>
+          </div>
+        </div>
+        <div class="bignum">
+          <div class="bignum__n">80</div>
+          <div>
+            <div class="bignum__t">кВт · перспективная конфигурация H100 DGX</div>
+            <div class="bignum__d">Требует жидкостного охлаждения и&nbsp;переработки распределения питания. На&nbsp;этом уровне «обычный» ЦОД работать не&nbsp;умеет.</div>
+          </div>
+        </div>
+
+        <h3 class="h-3" style="margin-top:48px; margin-bottom:18px;">Охлаждение</h3>
+        <div class="tbl-wrap">
+        <table class="tbl">
+          <thead><tr><th>Тип</th><th>Предел на стойку</th><th>Состояние в РФ</th></tr></thead>
+          <tbody>
+            <tr><td>Воздушное (CRAC/CRAH)</td><td>20–25 кВт</td><td>Доминирует в legacy-ЦОД</td></tr>
+            <tr><td>Жидкостное (DLC)</td><td><span class="accent">&gt; 40 кВт</span></td><td>IXcellerate, DataPro, Selectel — для AI-секций</td></tr>
+            <tr><td>Иммерсионное</td><td>100+ кВт</td><td>Экспериментально</td></tr>
+          </tbody>
+        </table>
+        </div>
+
+        <h3 class="h-3" style="margin-top:48px; margin-bottom:18px;">Рынок ЦОД РФ&nbsp;· данные 2024</h3>
+        <div class="stat-grid">
+          <div class="stat">
+            <div class="stat__tag">Мощность</div>
+            <div class="stat__num">841,5 <span class="unit">МВт</span></div>
+            <div class="stat__label">Суммарная установленная мощность российских ЦОД</div>
+          </div>
+          <div class="stat">
+            <div class="stat__tag">Ёмкость</div>
+            <div class="stat__num">82 400</div>
+            <div class="stat__label">Стойко-мест в коммерческих ЦОД</div>
+          </div>
+          <div class="stat">
+            <div class="stat__tag">Динамика</div>
+            <div class="stat__num">+33,4<span class="unit"> %</span></div>
+            <div class="stat__label">Рост за&nbsp;2023–2024</div>
+          </div>
+          <div class="stat">
+            <div class="stat__tag">Инвестиции · бюджет</div>
+            <div class="stat__num">60 <span class="unit">млрд&nbsp;₽</span></div>
+            <div class="stat__label">Государственные инвестиции в&nbsp;2024 году</div>
+          </div>
+        </div>
+
+        <p class="body" style="margin-top:32px;">Ведущие операторы&nbsp;— РТК-ЦОД, IXcellerate, Росатом, DataPro, Selectel. Географически рынок концентрируется в&nbsp;Центральной России, но&nbsp;перспективные регионы для&nbsp;AI-ЦОД&nbsp;— Иркутская, Мурманская области, Красноярский край: дешёвая электроэнергия и&nbsp;природное охлаждение.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ LATENCY ============ -->
+<section>
+  <div class="wrap">
+    <div class="section-rail">
+      <div class="section-rail__label">
+        <span class="num">3.4</span>
+        Latency и&nbsp;расположение
+      </div>
+      <div>
+        <h2 class="h-2" style="margin-bottom:28px;">Где стоит ЦОД&nbsp;— <span class="ser">определяет</span>, что в&nbsp;нём можно делать</h2>
+
+        <div class="split">
+          <div>
+            <div class="eyebrow" style="margin-bottom:14px;"><span class="dash">→</span> Реальное время</div>
+            <h3 class="h-3" style="margin-bottom:14px;">Антифрод</h3>
+            <p class="body">Транзакция авторизуется за&nbsp;100–200&nbsp;мс. AI-модель должна вынести решение за&nbsp;&lt;&nbsp;50&nbsp;мс, чтобы оставить время на&nbsp;коммуникацию с&nbsp;платёжной системой. Это значит&nbsp;— GPU-кластер должен быть в&nbsp;том же ЦОД, что и&nbsp;процессинговое ядро, либо в&nbsp;метро-кластере с&nbsp;задержкой &lt;&nbsp;5&nbsp;мс.</p>
+          </div>
+          <div>
+            <div class="eyebrow" style="margin-bottom:14px;"><span class="dash">→</span> Batch</div>
+            <h3 class="h-3" style="margin-bottom:14px;">Обучение моделей</h3>
+            <p class="body">Обучение&nbsp;— ночной batch-процесс. Задержка не&nbsp;критична, важна пропускная способность к&nbsp;обучающим данным и&nbsp;мощность кластера. Можно размещать в&nbsp;более дешёвых региональных ЦОД с&nbsp;холодным климатом.</p>
+          </div>
+        </div>
+
+        <div class="callout" style="margin-top:48px;">
+          Вывод. Двухуровневая топология: production-inference&nbsp;— в&nbsp;metro-ЦОД рядом с&nbsp;основным IT; training&nbsp;— в&nbsp;удалённых мощностях. Это&nbsp;же объясняет, почему банки строят несколько ЦОД, а&nbsp;не&nbsp;один большой.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dense">
+  <div class="wrap">
+    <div class="flex-row next-row" style="justify-content:space-between; align-items:flex-end;">
+      <div>
+        <span class="eyebrow"><span class="dash">→</span> Дальше</span>
+        <h3 class="h-2" style="margin-top:14px;">04 · On-prem <span class="ser">vs</span> облако</h3>
+      </div>
+      <a class="btn is-primary" href="../on-prem-vs-cloud/">Перейти к разделу 04 <span class="arr">↗</span></a>
+    </div>
+  </div>
+</section>
+
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot__top">
+      <div class="foot__col">
+        <div class="foot__brand">AI · Infrastructure<br><span class="ser">Hub</span>.</div>
+        <p class="foot__byline">Разбор инфраструктурного слоя ИИ в российском финансовом секторе.</p>
+      </div>
+      <div class="foot__col">
+        <h5>Разделы 01—04</h5>
+        <a href="../why-fintech/">Зачем финтеху AI</a>
+        <a href="../cases/">Кейсы</a>
+        <a href="../hardware/">Железо и ЦОД</a>
+        <a href="../on-prem-vs-cloud/">On-prem vs облако</a>
+      </div>
+      <div class="foot__col">
+        <h5>Разделы 05—07</h5>
+        <a href="../regulation/">Регуляторика</a>
+        <a href="../mlops/">MLOps</a>
+        <a href="../about/">О проекте</a>
+      </div>
+      <div class="foot__col">
+        <h5>Контекст</h5>
+        <a href="../about/#sources">Источники</a>
+        <a href="../index.html">На главную</a>
+      </div>
+    </div>
+    <div class="foot__bottom">
+      <div>© 2026 · AI Infrastructure Hub</div>
+      <div>Раздел 03 / 07</div>
+      <div>Made with Nginx · static · self-hosted</div>
+    </div>
+  </div>
+</footer>
+
+<script src="../js/main.js"></script>
+</body>
+</html>

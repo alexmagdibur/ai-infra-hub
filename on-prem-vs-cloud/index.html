@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>04 · On-prem vs облако — AI Infrastructure Hub</title>
+<meta name="description" content="Архитектурный выбор российских банков: on-premise, российские облака, гибрид — после 2022 года.">
+<link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+<nav class="nav" role="navigation" aria-label="Основная навигация">
+  <div class="wrap nav__inner">
+    <a href="../index.html" class="brand" aria-label="AI Infrastructure Hub — на главную">
+      <span class="dot" aria-hidden="true"></span>
+      <span>AI · INFRASTRUCTURE <b>HUB</b></span>
+    </a>
+    <div class="nav__menu" id="nav-main">
+      <a href="../why-fintech/">01 · Зачем</a>
+      <a href="../cases/">02 · Кейсы</a>
+      <a href="../hardware/">03 · Железо</a>
+      <a href="../on-prem-vs-cloud/" class="is-current">04 · Cloud</a>
+      <a href="../regulation/">05 · Право</a>
+      <a href="../mlops/">06 · MLOps</a>
+      <a href="../about/">07 · О проекте</a>
+    </div>
+    <button class="nav__toggle" aria-controls="nav-main" aria-expanded="false" aria-label="Открыть меню">
+      <span></span><span></span><span></span>
+    </button>
+    <div class="nav__num" aria-hidden="true">04 / 07</div>
+  </div>
+</nav>
+
+<header class="page-head">
+  <div class="head-bg" role="img" aria-label="Сетевые кабели и патч-панель" style="background-image:url('https://plus.unsplash.com/premium_photo-1664297989345-f4ff2063b212?q=80&w=1098&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');"></div>
+  <div class="wrap">
+    <div class="crumb">
+      <a href="../index.html">← Главная</a>
+      <span class="arr">/</span>
+      <span>Раздел 04</span>
+    </div>
+    <div class="page-head__rail">
+      <div class="page-head__num" aria-hidden="true">04</div>
+      <div class="page-head__meta">
+        Раздел 04<br>
+        <b>On-premise vs облако</b><br>
+        Архитектурный выбор в&nbsp;РФ
+      </div>
+    </div>
+    <h1 class="h-1 page-head__title">
+      AWS уехал.<br>
+      Что осталось<br>
+      <span class="ser">у&nbsp;банков</span>?
+    </h1>
+    <p class="lede">
+      Глобальный тренд&nbsp;— гибридные архитектуры. Российский тренд&nbsp;— тот же гибрид, но&nbsp;с&nbsp;принципиально другим набором провайдеров и&nbsp;другим балансом рисков. После&nbsp;2022 года у&nbsp;банков буквально не&nbsp;осталось AWS, Azure, GCP&nbsp;— и&nbsp;это переписало все архитектурные решения.
+    </p>
+  </div>
+</header>
+
+<!-- ============ GLOBAL ============ -->
+<section>
+  <div class="wrap">
+    <div class="section-rail">
+      <div class="section-rail__label">
+        <span class="num">4.1</span>
+        Что выбирают в&nbsp;мире
+      </div>
+      <div>
+        <h2 class="h-2" style="margin-bottom:24px;">Глобально&nbsp;— <span class="ser">гибрид</span></h2>
+        <p class="lede">По данным систематического обзора <em style="color:var(--accent); font-style:italic;">Matović et al.</em> (Nature/Palgrave, 2025): крупные банки держат чувствительные данные и&nbsp;inference on-premise, а&nbsp;в&nbsp;публичное облако выносят разработку и&nbsp;batch-задачи. Чистый on-prem встречается всё реже, чистое облако&nbsp;— в&nbsp;банках почти не&nbsp;встречается.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ RUSSIA ============ -->
+<section>
+  <div class="wrap">
+    <div class="section-rail">
+      <div class="section-rail__label">
+        <span class="num">4.2</span>
+        Российский контекст
+      </div>
+      <div>
+        <h2 class="h-2" style="margin-bottom:24px;">Два фактора, которые <span class="ser">переписали</span> рынок</h2>
+
+        <div class="split">
+          <div>
+            <div class="eyebrow" style="margin-bottom:14px;"><span class="dash">·</span> Фактор 1</div>
+            <h3 class="h-3" style="margin-bottom:14px;">Санкции</h3>
+            <p class="body">После 2022 года AWS, Azure, Google Cloud официально прекратили продажи новых сервисов российским компаниям. Банки, зависевшие от&nbsp;западных облаков, были вынуждены экстренно мигрировать. Это ускорило развитие российских облачных провайдеров на&nbsp;несколько лет.</p>
+          </div>
+          <div>
+            <div class="eyebrow" style="margin-bottom:14px;"><span class="dash">·</span> Фактор 2</div>
+            <h3 class="h-3" style="margin-bottom:14px;">Регуляторика</h3>
+            <p class="body">ФЗ-152 «О&nbsp;персональных данных» требует хранения ПДн граждан РФ на&nbsp;серверах в&nbsp;России. Для банков&nbsp;— дополнительные требования ЦБ (см.&nbsp;раздел&nbsp;05). Это де-факто исключает зарубежные облака для&nbsp;основных данных.</p>
+          </div>
+        </div>
+
+        <h3 class="h-3" style="margin-top:48px; margin-bottom:18px;">Российские облачные провайдеры для&nbsp;финтеха</h3>
+        <div class="tbl-wrap">
+        <table class="tbl">
+          <thead><tr><th>Провайдер</th><th>Основа</th><th>AI-сервисы</th><th>Статус</th></tr></thead>
+          <tbody>
+            <tr><td>СберCloud</td><td>Инфраструктура Сбера</td><td><span class="accent">ML Space, GigaChat API</span></td><td>Внутренний + коммерческий</td></tr>
+            <tr><td>Яндекс Облако</td><td>Яндекс</td><td><span class="accent">YandexGPT API, DataSphere</span></td><td>Активно развивается</td></tr>
+            <tr><td>VK Cloud</td><td>VK</td><td>ML-сервисы</td><td>Средняя зрелость</td></tr>
+            <tr><td>Т1 Cloud</td><td>ТКС Холдинг</td><td>Инфраструктура для ML</td><td>Для экосистемы Т-Банка</td></tr>
+            <tr><td>Selectel</td><td>Независимый</td><td>GPU-серверы в&nbsp;аренду</td><td>Инфраструктурный уровень</td></tr>
+          </tbody>
+        </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ COMPARISON ============ -->
+<section>
+  <div class="wrap">
+    <div class="section-rail">
+      <div class="section-rail__label">
+        <span class="num">4.3</span>
+        Сравнение подходов
+      </div>
+      <div>
+        <h2 class="h-2" style="margin-bottom:24px;">Где живут <span class="ser">плюсы</span>, где живут <span class="ser">риски</span></h2>
+
+        <div class="tbl-wrap">
+        <table class="tbl">
+          <thead><tr><th>Критерий</th><th>On-premise</th><th>Российское облако</th><th>Гибрид</th></tr></thead>
+          <tbody>
+            <tr><td>CAPEX</td><td><span class="accent">Высокий</span></td><td>Нет</td><td>Средний</td></tr>
+            <tr><td>OPEX</td><td>Низкий при&nbsp;масштабе</td><td>Постоянный</td><td>Гибкий</td></tr>
+            <tr><td>Контроль данных</td><td><span class="accent">Полный</span></td><td>Зависит от SLA</td><td>Частичный</td></tr>
+            <tr><td>Скорость масштабирования</td><td>Месяцы</td><td><span class="accent">Часы / дни</span></td><td>Гибкая</td></tr>
+            <tr><td>Доступность GPU</td><td>Проблемы из-за санкций</td><td>Ограниченный пул</td><td>Комбинация</td></tr>
+            <tr><td>Соответствие регуляторике</td><td>Проще</td><td>Нужна верификация</td><td>Нужна архитектура</td></tr>
+            <tr><td>Риск vendor lock-in</td><td>Отсутствует</td><td><span class="accent">Высокий</span></td><td>Средний</td></tr>
+          </tbody>
+        </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ WHO CHOOSES WHAT ============ -->
+<section>
+  <div class="wrap">
+    <div class="section-rail">
+      <div class="section-rail__label">
+        <span class="num">4.4</span>
+        Тенденции
+      </div>
+      <div>
+        <h2 class="h-2" style="margin-bottom:32px;">Что выбирают <span class="ser">российские</span> банки</h2>
+
+        <div class="bignum">
+          <div class="bignum__n">×3</div>
+          <div>
+            <div class="bignum__t">Крупные банки — Сбер, ВТБ</div>
+            <div class="bignum__d">Преимущественно on-premise. Строят собственные ЦОД, разворачивают свои ML-платформы, минимизируют зависимость от&nbsp;внешних поставщиков.</div>
+          </div>
+        </div>
+        <div class="bignum">
+          <div class="bignum__n">∼</div>
+          <div>
+            <div class="bignum__t">Средние банки</div>
+            <div class="bignum__d">Гибридная модель. Собственный ЦОД для&nbsp;production, облако для&nbsp;разработки, тестирования и&nbsp;экспериментов. Это позволяет двигаться быстрее без&nbsp;CAPEX-инвестиций.</div>
+          </div>
+        </div>
+        <div class="bignum">
+          <div class="bignum__n">↗</div>
+          <div>
+            <div class="bignum__t">Финтех-стартапы</div>
+            <div class="bignum__d">Облако как стартовая точка. По&nbsp;мере роста нагрузки и&nbsp;появления регуляторных требований&nbsp;— постепенный переход к&nbsp;собственной инфраструктуре.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ IMPORT SUBSTITUTION ============ -->
+<section>
+  <div class="wrap">
+    <div class="section-rail">
+      <div class="section-rail__label">
+        <span class="num">4.5</span>
+        Импортозамещение
+      </div>
+      <div>
+        <h2 class="h-2" style="margin-bottom:24px;">Где мы&nbsp;<span class="ser">сейчас</span> в&nbsp;железе</h2>
+
+        <div class="feat">
+          <div class="feat__cell">
+            <div class="feat__num">Серверы</div>
+            <div class="feat__title">Частично закрыто</div>
+            <p style="font-size:14.5px; color:var(--fg-2);">Yadro, «Аквариус», Graviton (Depo)&nbsp;— есть российские производители, но&nbsp;объём производства ограничен. Поставки идут, но&nbsp;«здесь и&nbsp;сейчас» на&nbsp;всех не&nbsp;хватает.</p>
+          </div>
+          <div class="feat__cell">
+            <div class="feat__num">GPU-ускорители</div>
+            <div class="feat__title">Зона <span class="ser">риска</span></div>
+            <p style="font-size:14.5px; color:var(--fg-2);">Критическая зависимость от&nbsp;NVIDIA. Yadro Basis на&nbsp;китайских чипах, разработки НМ-Тех&nbsp;— горизонт 2026–2028. До&nbsp;этого&nbsp;— параллельный импорт и&nbsp;оптимизация имеющегося парка.</p>
+          </div>
+          <div class="feat__cell">
+            <div class="feat__num">Сеть</div>
+            <div class="feat__title">Частичная замена</div>
+            <p style="font-size:14.5px; color:var(--fg-2);">Eltex, Zelax закрывают сегмент стандартного Ethernet. Но&nbsp;InfiniBand, на&nbsp;котором держится распределённое обучение&nbsp;— полностью зарубежный.</p>
+          </div>
+          <div class="feat__cell">
+            <div class="feat__num">Программный стек</div>
+            <div class="feat__title">Смешанная картина</div>
+            <p style="font-size:14.5px; color:var(--fg-2);">Python, PyTorch, TensorFlow&nbsp;— open-source, санкционного риска нет. Но&nbsp;CUDA-библиотеки NVIDIA&nbsp;— зона риска при&nbsp;полной блокировке поставщика.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dense">
+  <div class="wrap">
+    <div class="flex-row next-row" style="justify-content:space-between; align-items:flex-end;">
+      <div>
+        <span class="eyebrow"><span class="dash">→</span> Дальше</span>
+        <h3 class="h-2" style="margin-top:14px;">05 · Регуляторный <span class="ser">контур</span></h3>
+      </div>
+      <a class="btn is-primary" href="../regulation/">Перейти к разделу 05 <span class="arr">↗</span></a>
+    </div>
+  </div>
+</section>
+
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot__top">
+      <div class="foot__col">
+        <div class="foot__brand">AI · Infrastructure<br><span class="ser">Hub</span>.</div>
+        <p class="foot__byline">Разбор инфраструктурного слоя ИИ в российском финансовом секторе.</p>
+      </div>
+      <div class="foot__col">
+        <h5>Разделы 01—04</h5>
+        <a href="../why-fintech/">Зачем финтеху AI</a>
+        <a href="../cases/">Кейсы</a>
+        <a href="../hardware/">Железо и ЦОД</a>
+        <a href="../on-prem-vs-cloud/">On-prem vs облако</a>
+      </div>
+      <div class="foot__col">
+        <h5>Разделы 05—07</h5>
+        <a href="../regulation/">Регуляторика</a>
+        <a href="../mlops/">MLOps</a>
+        <a href="../about/">О проекте</a>
+      </div>
+      <div class="foot__col">
+        <h5>Контекст</h5>
+        <a href="../about/#sources">Источники</a>
+        <a href="../index.html">На главную</a>
+      </div>
+    </div>
+    <div class="foot__bottom">
+      <div>© 2026 · AI Infrastructure Hub</div>
+      <div>Раздел 04 / 07</div>
+      <div>Made with Nginx · static · self-hosted</div>
+    </div>
+  </div>
+</footer>
+
+<script src="../js/main.js"></script>
+</body>
+</html>

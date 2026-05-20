@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Infrastructure Hub — мозг для финтеха</title>
+<meta name="description" content="AI-инфраструктура в российском финтехе: GPU-кластеры, дата-центры, MLOps-платформы, регуляторика.">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<!-- ============ NAV ============ -->
+<nav class="nav" role="navigation" aria-label="Основная навигация">
+  <div class="wrap nav__inner">
+    <a href="index.html" class="brand" aria-label="AI Infrastructure Hub — на главную">
+      <span class="dot" aria-hidden="true"></span>
+      <span>AI · INFRASTRUCTURE <b>HUB</b></span>
+    </a>
+    <div class="nav__menu" id="nav-main">
+      <a href="why-fintech/">01 · Зачем</a>
+      <a href="cases/">02 · Кейсы</a>
+      <a href="hardware/">03 · Железо</a>
+      <a href="on-prem-vs-cloud/">04 · Cloud</a>
+      <a href="regulation/">05 · Право</a>
+      <a href="mlops/">06 · MLOps</a>
+      <a href="about/">07 · О проекте</a>
+    </div>
+    <button class="nav__toggle" aria-controls="nav-main" aria-expanded="false" aria-label="Открыть меню">
+      <span></span><span></span><span></span>
+    </button>
+    <div class="nav__num" aria-hidden="true">RU · 2026</div>
+  </div>
+</nav>
+
+<!-- ============ HERO ============ -->
+<header class="hero">
+  <div class="head-bg" role="img" aria-label="Серверный зал — нейронная инфраструктура" style="background-image:url('https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=2000&q=80&auto=format&fit=crop');"></div>
+  <div class="wrap">
+
+    <div class="flex-row" style="margin-bottom:32px; justify-content:space-between;">
+      <span class="eyebrow"><span class="dash">—</span> Выпуск 01 · Технологическая практика · 2026</span>
+      <span class="live">Готовый стек · live</span>
+    </div>
+
+    <h1 class="h-display hero__title">
+      Как российские<br>
+      банки строят<br>
+      <span class="ser">мозг</span> для своих<br>
+      систем.
+    </h1>
+
+    <div class="hero__bottom">
+      <div>
+        <p class="lede">
+          AI-инфраструктура в финтехе&nbsp;— от&nbsp;GPU-кластеров до&nbsp;MLOps-платформ. <em style="font-style:italic; color:var(--accent);">Финтех</em>&nbsp;остаётся одним из&nbsp;главных потребителей искусственного интеллекта в&nbsp;России: антифрод, скоринг и&nbsp;рекомендации работают только тогда, когда под&nbsp;ними правильно собранная инфраструктура.
+        </p>
+      </div>
+      <div class="body" style="text-align:left;">
+        <p style="color:var(--fg-3); font-size:14px; line-height:1.55; max-width:36ch; margin-left:auto;">
+          Этот сайт&nbsp;— разбор того, что стоит за «AI в банке»: какое железо, какие дата-центры, какие регуляторные ограничения, и&nbsp;что меняется в условиях импортозамещения. Семь разделов, четыре кейса, одна таблица сравнений.
+        </p>
+        <div style="display:flex; gap:12px; margin-top:24px; justify-content:flex-end; flex-wrap:wrap;">
+          <a href="why-fintech/" class="btn is-primary">
+            Начать с раздела 01
+            <span class="arr">↗</span>
+          </a>
+          <a href="#nav-cards" class="btn">Все разделы</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</header>
+
+<!-- ============ STAT GRID ============ -->
+<section class="dense" id="stats">
+  <div class="wrap">
+    <div class="flex-row" style="margin-bottom:32px; justify-content:space-between;">
+      <span class="eyebrow"><span class="dash">/01</span> Масштаб рынка</span>
+      <span class="eyebrow">Данные · 2024</span>
+    </div>
+
+    <div class="stat-grid">
+      <div class="stat">
+        <div class="stat__tag">RUB · 2024</div>
+        <div>
+          <div class="stat__num">780 <span class="unit">млрд</span></div>
+        </div>
+        <div class="stat__label">Объём российского рынка ИИ-решений по итогам 2024 года.</div>
+      </div>
+      <div class="stat">
+        <div class="stat__tag">RUB · ЦОД</div>
+        <div>
+          <div class="stat__num">156,5 <span class="unit">млрд</span></div>
+        </div>
+        <div class="stat__label">Объём российского рынка коммерческих центров обработки данных.</div>
+      </div>
+      <div class="stat">
+        <div class="stat__tag">Стойко-мест</div>
+        <div>
+          <div class="stat__num">82 400 <span class="unit">+33%</span></div>
+        </div>
+        <div class="stat__label">Суммарная ёмкость российских ЦОД на конец 2024-го. Год к году&nbsp;— рост на 33,4%.</div>
+      </div>
+      <div class="stat">
+        <div class="stat__tag">Adoption · Enterprise</div>
+        <div>
+          <div class="stat__num">95<span class="unit"> %</span></div>
+        </div>
+        <div class="stat__label">Доля крупных российских компаний, использующих ИИ в&nbsp;ключевых бизнес-процессах.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ MANIFESTO STRIP ============ -->
+<section class="dense">
+  <div class="wrap">
+    <div class="section-rail">
+      <div class="section-rail__label">
+        <span class="num">02</span>
+        О чём этот сайт
+      </div>
+      <div>
+        <h2 class="h-1" style="margin-bottom:28px;">
+          Не&nbsp;про&nbsp;<span class="ser">модели</span>.<br>
+          Про&nbsp;то, что под&nbsp;ними.
+        </h2>
+        <p class="lede" style="margin-bottom:32px;">
+          Когда говорят «банк&nbsp;использует ИИ», представляют умную модель. На&nbsp;практике&nbsp;— это десятки гигаватт-стоек, специализированные GPU-кластеры, отдельные дата-центры рядом с&nbsp;процессингом и&nbsp;платформа MLOps, через&nbsp;которую модель пройдёт путь от&nbsp;ноутбука дата-сайентиста до&nbsp;десятков миллионов транзакций в&nbsp;сутки.
+        </p>
+        <div class="chips">
+          <span class="chip"><span class="d"></span>GPU-кластеры</span>
+          <span class="chip"><span class="d"></span>Дата-центры</span>
+          <span class="chip"><span class="d"></span>MLOps</span>
+          <span class="chip"><span class="d"></span>Feature Store</span>
+          <span class="chip"><span class="d"></span>InfiniBand</span>
+          <span class="chip"><span class="d"></span>Liquid Cooling</span>
+          <span class="chip"><span class="d"></span>ФЗ-152</span>
+          <span class="chip"><span class="d"></span>Explainable AI</span>
+          <span class="chip"><span class="d"></span>Импортозамещение</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ NAV CARDS ============ -->
+<section id="nav-cards">
+  <div class="wrap">
+    <div class="flex-row" style="margin-bottom:40px; justify-content:space-between;">
+      <h2 class="h-1">Семь&nbsp;<span class="ser">разделов</span>.</h2>
+      <span class="eyebrow">Index · 01—07</span>
+    </div>
+
+    <div class="cards">
+
+      <a class="card" href="why-fintech/">
+        <div class="card__num">01</div>
+        <div>
+          <div class="card__title">Зачем финтеху <span class="ser">AI</span>-инфраструктура</div>
+          <div class="card__desc">Четыре ключевых применения ИИ в банках&nbsp;— антифрод, скоринг, рекомендации, ассистенты&nbsp;— и&nbsp;почему стандартного сервера для них недостаточно.</div>
+        </div>
+        <div class="card__arr" aria-hidden="true">↗</div>
+      </a>
+
+      <a class="card" href="cases/">
+        <div class="card__num">02</div>
+        <div>
+          <div class="card__title">Кейсы российских <span class="ser">игроков</span></div>
+          <div class="card__desc">Сбер, Т-Банк, Альфа, ВТБ. Кто строит собственное облако, кто живёт на&nbsp;open-source, кто на&nbsp;Kubeflow.</div>
+        </div>
+        <div class="card__arr" aria-hidden="true">↗</div>
+      </a>
+
+      <a class="card" href="hardware/">
+        <div class="card__num">03</div>
+        <div>
+          <div class="card__title">Железо и&nbsp;<span class="ser">дата-центры</span></div>
+          <div class="card__desc">GPU, FPGA, топология кластера, охлаждение стоек по&nbsp;40&nbsp;кВт, latency-критерии для&nbsp;размещения ЦОД.</div>
+        </div>
+        <div class="card__arr" aria-hidden="true">↗</div>
+      </a>
+
+      <a class="card" href="on-prem-vs-cloud/">
+        <div class="card__num">04</div>
+        <div>
+          <div class="card__title">On-prem <span class="ser">vs</span> облако</div>
+          <div class="card__desc">Где живут данные банка после&nbsp;2022 года. Российские облачные провайдеры, гибридные архитектуры, импортозамещение.</div>
+        </div>
+        <div class="card__arr" aria-hidden="true">↗</div>
+      </a>
+
+      <a class="card" href="regulation/">
+        <div class="card__num">05</div>
+        <div>
+          <div class="card__title">Регуляторный <span class="ser">контур</span></div>
+          <div class="card__desc">ФЗ-152, требования Банка России 716-П / 683-П, концепция КИИ и&nbsp;explainability в&nbsp;кредитных моделях.</div>
+        </div>
+        <div class="card__arr" aria-hidden="true">↗</div>
+      </a>
+
+      <a class="card" href="mlops/">
+        <div class="card__num">06</div>
+        <div>
+          <div class="card__title">MLOps в&nbsp;<span class="ser">банках</span></div>
+          <div class="card__desc">Жизненный цикл модели: feature&nbsp;store, model&nbsp;registry, мониторинг дрейфа, борьба с&nbsp;concept&nbsp;drift в&nbsp;кризис.</div>
+        </div>
+        <div class="card__arr" aria-hidden="true">↗</div>
+      </a>
+
+      <a class="card" href="about/" style="grid-column:1 / -1; border-right:0;">
+        <div class="card__num">07</div>
+        <div>
+          <div class="card__title">О&nbsp;<span class="ser">проекте</span> и&nbsp;источники</div>
+          <div class="card__desc">Контекст создания сайта, автор, научные источники, аналитика и&nbsp;нормативные документы.</div>
+        </div>
+        <div class="card__arr" aria-hidden="true">↗</div>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============ QUOTE ============ -->
+<section>
+  <div class="wrap">
+    <div class="section-rail">
+      <div class="section-rail__label">
+        <span class="num">·</span>
+        Источник
+      </div>
+      <div class="quote">
+        <blockquote>
+          Интеграция искусственного интеллекта в&nbsp;финансовые услуги представляет собой сдвиг в&nbsp;развитии отрасли, открывая беспрецедентные возможности и&nbsp;вызовы.
+        </blockquote>
+        <div class="quote__src">
+          <b>Matović, Vuković et al.</b><br>
+          Humanities and Social Sciences Communications<br>
+          Nature / Palgrave · Vol. 12, Art. 562<br>
+          2025 · DOI 10.1057/s41599-025-04850-8
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot__top">
+      <div class="foot__col">
+        <div class="foot__brand">AI · Infrastructure<br><span class="ser">Hub</span>.</div>
+        <p class="foot__byline">Разбор инфраструктурного слоя ИИ в&nbsp;российском финансовом секторе. Проект в&nbsp;рамках технологической практики.</p>
+      </div>
+      <div class="foot__col">
+        <h5>Разделы 01—04</h5>
+        <a href="why-fintech/">Зачем финтеху AI</a>
+        <a href="cases/">Кейсы</a>
+        <a href="hardware/">Железо и ЦОД</a>
+        <a href="on-prem-vs-cloud/">On-prem vs облако</a>
+      </div>
+      <div class="foot__col">
+        <h5>Разделы 05—07</h5>
+        <a href="regulation/">Регуляторика</a>
+        <a href="mlops/">MLOps</a>
+        <a href="about/">О проекте</a>
+      </div>
+      <div class="foot__col">
+        <h5>Источники</h5>
+        <a href="about/#sources">Научные статьи</a>
+        <a href="about/#sources">Аналитика рынка</a>
+        <a href="about/#sources">Нормативные акты</a>
+      </div>
+    </div>
+    <div class="foot__bottom">
+      <div>© 2026 · AI Infrastructure Hub</div>
+      <div>v 1.0 · build 24.05</div>
+      <div>Made with Nginx · static · self-hosted</div>
+    </div>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>

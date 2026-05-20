@@ -1,0 +1,24 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(cd \"D:\\\\BMSTU\\\\website ideas\" && ls)",
+      "Bash(powershell -Command \"Expand-Archive -Path 'ai-infra-hub-handoff.zip' -DestinationPath 'extracted_handoff' -Force\")",
+      "Bash(New-Item -ItemType Directory -Force \"D:\\\\BMSTU\\\\ai-infra-hub\\\\css\")",
+      "Bash(New-Item -ItemType Directory -Force \"D:\\\\BMSTU\\\\ai-infra-hub\\\\js\")",
+      "Bash(New-Item -ItemType Directory -Force \"D:\\\\BMSTU\\\\ai-infra-hub\\\\img\\\\icons\")",
+      "Bash(New-Item -ItemType Directory -Force \"D:\\\\BMSTU\\\\ai-infra-hub\\\\why-fintech\")",
+      "Bash(New-Item -ItemType Directory -Force \"D:\\\\BMSTU\\\\ai-infra-hub\\\\cases\")",
+      "PowerShell(New-Item -ItemType Directory -Force \"D:\\\\BMSTU\\\\ai-infra-hub\\\\css\")",
+      "PowerShell(New-Item -ItemType Directory -Force \"D:\\\\BMSTU\\\\ai-infra-hub\\\\js\")",
+      "PowerShell(New-Item -ItemType Directory -Force \"D:\\\\BMSTU\\\\ai-infra-hub\\\\img\\\\icons\")",
+      "PowerShell(New-Item -ItemType Directory -Force \"D:\\\\BMSTU\\\\ai-infra-hub\\\\why-fintech\")",
+      "PowerShell(New-Item -ItemType Directory -Force \"D:\\\\BMSTU\\\\ai-infra-hub\\\\cases\")",
+      "PowerShell(New-Item -ItemType Directory -Force \"D:\\\\BMSTU\\\\ai-infra-hub\\\\hardware\")",
+      "PowerShell(New-Item -ItemType Directory -Force \"D:\\\\BMSTU\\\\ai-infra-hub\\\\on-prem-vs-cloud\")",
+      "PowerShell(New-Item -ItemType Directory -Force \"D:\\\\BMSTU\\\\ai-infra-hub\\\\regulation\")",
+      "PowerShell(New-Item -ItemType Directory -Force \"D:\\\\BMSTU\\\\ai-infra-hub\\\\mlops\")",
+      "PowerShell(New-Item -ItemType Directory -Force \"D:\\\\BMSTU\\\\ai-infra-hub\\\\about\")",
+      "PowerShell(Get-ChildItem -Recurse \"D:\\\\BMSTU\\\\ai-infra-hub\" | Where-Object { !$_.PSIsContainer } | Select-Object FullName, Length | Sort-Object FullName)"
+    ]
+  }
+}

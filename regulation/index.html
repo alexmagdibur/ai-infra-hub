@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>05 · Регуляторный контур — AI Infrastructure Hub</title>
+<meta name="description" content="ФЗ-152, требования ЦБ 716-П / 683-П, КИИ и Explainable AI в кредитных решениях.">
+<link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+<nav class="nav" role="navigation" aria-label="Основная навигация">
+  <div class="wrap nav__inner">
+    <a href="../index.html" class="brand" aria-label="AI Infrastructure Hub — на главную">
+      <span class="dot" aria-hidden="true"></span>
+      <span>AI · INFRASTRUCTURE <b>HUB</b></span>
+    </a>
+    <div class="nav__menu" id="nav-main">
+      <a href="../why-fintech/">01 · Зачем</a>
+      <a href="../cases/">02 · Кейсы</a>
+      <a href="../hardware/">03 · Железо</a>
+      <a href="../on-prem-vs-cloud/">04 · Cloud</a>
+      <a href="../regulation/" class="is-current">05 · Право</a>
+      <a href="../mlops/">06 · MLOps</a>
+      <a href="../about/">07 · О проекте</a>
+    </div>
+    <button class="nav__toggle" aria-controls="nav-main" aria-expanded="false" aria-label="Открыть меню">
+      <span></span><span></span><span></span>
+    </button>
+    <div class="nav__num" aria-hidden="true">05 / 07</div>
+  </div>
+</nav>
+
+<header class="page-head">
+  <div class="head-bg" role="img" aria-label="Классические колонны — регуляторный контекст" style="background-image:url('https://images.unsplash.com/photo-1505664194779-8beaceb93744?w=2000&q=80&auto=format&fit=crop');"></div>
+  <div class="wrap">
+    <div class="crumb">
+      <a href="../index.html">← Главная</a>
+      <span class="arr">/</span>
+      <span>Раздел 05</span>
+    </div>
+    <div class="page-head__rail">
+      <div class="page-head__num" aria-hidden="true">05</div>
+      <div class="page-head__meta">
+        Раздел 05<br>
+        <b>Регуляторный контур</b><br>
+        ФЗ-152 · ЦБ · КИИ · XAI
+      </div>
+    </div>
+    <h1 class="h-1 page-head__title">
+      Закон не&nbsp;запрещает&nbsp;AI.<br>
+      Закон <span class="ser">переписывает</span><br>
+      его инфраструктуру.
+    </h1>
+    <p class="lede">
+      Регулятор в&nbsp;банковской сфере не&nbsp;спорит с&nbsp;ИИ&nbsp;— он&nbsp;спорит с&nbsp;тем, как и&nbsp;где этот ИИ работает. ФЗ-152 определяет географию данных. Положения ЦБ&nbsp;716-П, 683-П и&nbsp;684-П определяют надёжность и&nbsp;сертификацию. КИИ требует отечественного ПО. Письмо ЦБ&nbsp;об&nbsp;ИИ в&nbsp;кредитовании запрещает «чёрные ящики».
+    </p>
+  </div>
+</header>
+
+<!-- ============ FZ-152 ============ -->
+<section>
+  <div class="wrap">
+    <div class="section-rail">
+      <div class="section-rail__label">
+        <span class="num">5.1</span>
+        ФЗ-152
+      </div>
+      <div>
+        <h2 class="h-2" style="margin-bottom:24px;">ФЗ-152 «О&nbsp;<span class="ser">персональных</span> данных»</h2>
+
+        <h3 class="h-3" style="margin-top:24px; margin-bottom:14px;">Основные требования для банков</h3>
+        <ul style="list-style:none; font-size:15px; color:var(--fg-2); line-height:1.7;">
+          <li style="padding-left:20px; position:relative; margin:6px 0;"><span style="position:absolute; left:0; top:11px; width:8px; height:1px; background:var(--accent); display:block;"></span> Хранение персональных данных граждан РФ&nbsp;— только на&nbsp;серверах в&nbsp;России</li>
+          <li style="padding-left:20px; position:relative; margin:6px 0;"><span style="position:absolute; left:0; top:11px; width:8px; height:1px; background:var(--accent); display:block;"></span> Трансграничная передача допускается, но&nbsp;оригинал должен оставаться в&nbsp;РФ</li>
+          <li style="padding-left:20px; position:relative; margin:6px 0;"><span style="position:absolute; left:0; top:11px; width:8px; height:1px; background:var(--accent); display:block;"></span> Требования к&nbsp;защите: шифрование, контроль доступа, аудит</li>
+        </ul>
+
+        <h3 class="h-3" style="margin-top:32px; margin-bottom:14px;">Что это значит для AI</h3>
+        <div class="callout">
+          Обучающие датасеты с&nbsp;ПДн&nbsp;— только on-premise или в&nbsp;российском облаке. Векторные представления (embeddings) клиентов&nbsp;— тоже под&nbsp;законом, если позволяют идентификацию. Feature&nbsp;store обязан жить в&nbsp;российском контуре.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CBR REQUIREMENTS ============ -->
+<section>
+  <div class="wrap">
+    <div class="section-rail">
+      <div class="section-rail__label">
+        <span class="num">5.2</span>
+        Банк России
+      </div>
+      <div>
+        <h2 class="h-2" style="margin-bottom:32px;">Что говорит&nbsp;<span class="ser">Центробанк</span></h2>
+
+        <div class="feat">
+          <div class="feat__cell">
+            <div class="feat__num">716-П · 2021</div>
+            <div class="feat__title">Управление операционным <span class="ser">риском</span></div>
+            <ul class="feat__list">
+              <li>Требования к надёжности критичных систем</li>
+              <li>Обязательные планы BCP / DR для AI-сервисов</li>
+              <li>Тестирование моделей перед выводом в&nbsp;продакшен</li>
+            </ul>
+          </div>
+          <div class="feat__cell">
+            <div class="feat__num">683-П / 684-П</div>
+            <div class="feat__title">Защита <span class="ser">информации</span></div>
+            <ul class="feat__list">
+              <li>Сертификация СЗИ — ФСТЭК, ФСБ</li>
+              <li>Требования к аппаратным HSM для криптографии</li>
+              <li>Часть иностранных компонентов ML-стека просто не&nbsp;пройдёт сертификацию</li>
+            </ul>
+          </div>
+          <div class="feat__cell">
+            <div class="feat__num">Письмо · 2023</div>
+            <div class="feat__title">AI в&nbsp;<span class="ser">кредитовании</span></div>
+            <ul class="feat__list">
+              <li>Банк обязан объяснять причины отказа в&nbsp;кредите</li>
+              <li>«Чёрный ящик» не&nbsp;допускается</li>
+              <li>Нужны интерпретируемые модели или SHAP / LIME</li>
+            </ul>
+          </div>
+          <div class="feat__cell">
+            <div class="feat__num">187-ФЗ · КИИ</div>
+            <div class="feat__title">Критическая <span class="ser">инфраструктура</span></div>
+            <ul class="feat__list">
+              <li>Банки — субъекты КИИ</li>
+              <li>Поэтапный переход на отечественное ПО до&nbsp;2030</li>
+              <li>Антифрод и скоринг — под&nbsp;это требование</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SOVEREIGN STACK ============ -->
+<section>
+  <div class="wrap">
+    <div class="section-rail">
+      <div class="section-rail__label">
+        <span class="num">5.3</span>
+        Суверенный стек
+      </div>
+      <div>
+        <h2 class="h-2" style="margin-bottom:24px;">Концепция <span class="ser">технологической независимости</span></h2>
+        <p class="body" style="margin-bottom:24px;">Национальная программа «Цифровая экономика РФ» поддерживает отечественных IT-разработчиков. Реестр отечественного ПО даёт преференции при&nbsp;госзакупках. Для&nbsp;ВТБ, Сбера и&nbsp;других квазигосударственных структур это давление на&nbsp;переход к&nbsp;отечественным решениям.</p>
+
+        <p class="body">Банки относятся к&nbsp;субъектам критической информационной инфраструктуры (КИИ). Требование перехода на&nbsp;отечественное ПО для&nbsp;критичных систем&nbsp;— поэтапно до&nbsp;2030&nbsp;года. AI-системы антифрода и&nbsp;скоринга попадают под&nbsp;это требование.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ XAI ============ -->
+<section>
+  <div class="wrap">
+    <div class="section-rail">
+      <div class="section-rail__label">
+        <span class="num">5.4</span>
+        Этика и&nbsp;XAI
+      </div>
+      <div>
+        <h2 class="h-2" style="margin-bottom:24px;">Этические требования к&nbsp;AI <span class="ser">в&nbsp;финансах</span></h2>
+        <p class="lede" style="margin-bottom:24px;">
+          По данным <em style="color:var(--accent); font-style:italic;">Matović et al. (2025)</em>: глобальный регуляторный тренд&nbsp;— требования к&nbsp;Explainable AI и&nbsp;алгоритмической прозрачности. Россия движется в&nbsp;том же направлении через требования ЦБ об&nbsp;объяснении кредитных решений.
+        </p>
+        <p class="body">
+          <em style="color:var(--accent); font-style:italic;">Eskandarany (Frontiers in AI, 2024)</em> на&nbsp;примере банков Саудовской Аравии показывает, что советы директоров банков рассматривают этические риски AI&nbsp;— предвзятость данных, конфиденциальность&nbsp;— как ключевую зону ответственности. Это совпадает с&nbsp;тем, что мы видим в&nbsp;российском регуляторе.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SUMMARY TABLE ============ -->
+<section>
+  <div class="wrap">
+    <div class="section-rail">
+      <div class="section-rail__label">
+        <span class="num">5.5</span>
+        Сводка
+      </div>
+      <div>
+        <h2 class="h-2" style="margin-bottom:32px;">Регулятор → требование →&nbsp;<span class="ser">следствие</span></h2>
+
+        <div class="tbl-wrap">
+        <table class="tbl">
+          <thead><tr><th>Регулятор / НПА</th><th>Требование</th><th>Следствие для AI-инфраструктуры</th></tr></thead>
+          <tbody>
+            <tr><td>ФЗ-152</td><td>Хранение ПДн в&nbsp;РФ</td><td><span class="accent">Запрет зарубежных облаков</span> для&nbsp;обучения на&nbsp;реальных данных</td></tr>
+            <tr><td>ЦБ 716-П</td><td>Надёжность критичных систем</td><td>BCP/DR для ML, мониторинг дрейфа моделей</td></tr>
+            <tr><td>ЦБ 683 / 684-П</td><td>Сертификация СЗИ</td><td>Ограничения на иностранные компоненты стека</td></tr>
+            <tr><td>ЦБ · письмо об AI</td><td>Explainability кредитов</td><td><span class="accent">Интерпретируемые модели</span>, SHAP-объяснения</td></tr>
+            <tr><td>187-ФЗ · КИИ</td><td>Отечественное ПО</td><td>Поиск замены западным ML-инструментам</td></tr>
+          </tbody>
+        </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="dense">
+  <div class="wrap">
+    <div class="flex-row next-row" style="justify-content:space-between; align-items:flex-end;">
+      <div>
+        <span class="eyebrow"><span class="dash">→</span> Дальше</span>
+        <h3 class="h-2" style="margin-top:14px;">06 · MLOps в <span class="ser">банках</span></h3>
+      </div>
+      <a class="btn is-primary" href="../mlops/">Перейти к разделу 06 <span class="arr">↗</span></a>
+    </div>
+  </div>
+</section>
+
+<footer class="foot">
+  <div class="wrap">
+    <div class="foot__top">
+      <div class="foot__col">
+        <div class="foot__brand">AI · Infrastructure<br><span class="ser">Hub</span>.</div>
+        <p class="foot__byline">Разбор инфраструктурного слоя ИИ в российском финансовом секторе.</p>
+      </div>
+      <div class="foot__col">
+        <h5>Разделы 01—04</h5>
+        <a href="../why-fintech/">Зачем финтеху AI</a>
+        <a href="../cases/">Кейсы</a>
+        <a href="../hardware/">Железо и ЦОД</a>
+        <a href="../on-prem-vs-cloud/">On-prem vs облако</a>
+      </div>
+      <div class="foot__col">
+        <h5>Разделы 05—07</h5>
+        <a href="../regulation/">Регуляторика</a>
+        <a href="../mlops/">MLOps</a>
+        <a href="../about/">О проекте</a>
+      </div>
+      <div class="foot__col">
+        <h5>Контекст</h5>
+        <a href="../about/#sources">Источники</a>
+        <a href="../index.html">На главную</a>
+      </div>
+    </div>
+    <div class="foot__bottom">
+      <div>© 2026 · AI Infrastructure Hub</div>
+      <div>Раздел 05 / 07</div>
+      <div>Made with Nginx · static · self-hosted</div>
+    </div>
+  </div>
+</footer>
+
+<script src="../js/main.js"></script>
+</body>
+</html>
